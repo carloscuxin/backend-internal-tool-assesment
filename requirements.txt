@@ -1,0 +1,5 @@
+flask
+redis
+faker
+flask-restx
+flask_caching

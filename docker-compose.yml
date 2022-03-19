@@ -1,0 +1,23 @@
+version: "3"
+services:
+  external-api:
+    build: .
+    ports:
+      - 5000:5000
+    networks:
+      - external-api-network
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=app.py flask run
+    volumes:
+      - .:/code
+    depends_on:
+      - redis
+  redis:
+    image: redislabs/rejson
+    networks:
+      - external-api-network
+
+networks:
+  external-api-network:
+    name: external-api-network
